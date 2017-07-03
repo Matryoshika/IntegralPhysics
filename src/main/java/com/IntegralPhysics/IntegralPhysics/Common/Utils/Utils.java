@@ -46,6 +46,7 @@ public class Utils {
 	}
 	
 	//Ampere#####################################################################
+
 	/**
 	 * Returns ampere from watt & voltage
 	 */

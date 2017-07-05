@@ -39,7 +39,7 @@ public class Utils {
 	}
 
 	/**
-	 * Returns Ohm from volt and ohm
+	 * Returns Ohm from volt and watt
 	 */
 	public static double getOhmVW(double volt, double watt) {
 		return (volt * volt) / watt;

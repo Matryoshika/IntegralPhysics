@@ -21,74 +21,87 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockSteamTurbine extends Block{
-	
+public class BlockSteamTurbine extends Block implements IMetaBlock {
+
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumType.class);
 
 	public BlockSteamTurbine() {
 		super(Material.IRON);
-		setRegistryName(IntegralPhysics.MODID,"steam_turbine");
+		setRegistryName(IntegralPhysics.MODID, "steam_turbine");
 		setUnlocalizedName(getRegistryName().toString());
 		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE, EnumType.BLADE));
 	}
-	
+
 	@Override
-	protected BlockStateContainer createBlockState(){
-		return new BlockStateContainer(this, new IProperty[]{TYPE});
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
-	
+
 	@Override
-	public IBlockState getStateFromMeta(int meta){
-		//Defaults to blade as that is the cheapest variation, in case of metadata voiding
-		return getDefaultState().withProperty(TYPE, meta == 0 ? EnumType.MAIN : meta == 1 ? EnumType.SHAFT : EnumType.BLADE);
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
-	
+
 	@Override
-	public int getMetaFromState(IBlockState state){
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] { TYPE });
+	}
+
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		// Defaults to blade as that is the cheapest variation, in case of
+		// metadata voiding
+		return getDefaultState().withProperty(TYPE,
+				meta == 0 ? EnumType.MAIN : meta == 1 ? EnumType.SHAFT : EnumType.BLADE);
+	}
+
+	@Override
+	public int getMetaFromState(IBlockState state) {
 		EnumType type = (EnumType) state.getValue(TYPE);
 		return type.getID();
 	}
-	
+
 	@Override
 	public int damageDropped(IBlockState state) {
-	    return getMetaFromState(state);
+		return getMetaFromState(state);
 	}
-	
-	
+
 	@Override
 	public void getSubBlocks(Item itemIn, CreativeTabs tab, List list) {
-		for(EnumType en : EnumType.values()){
+		for (EnumType en : EnumType.values()) {
 			list.add(new ItemStack(itemIn, 1, en.getID()));
 		}
 	}
-	
-	
+
 	public enum EnumType implements IStringSerializable {
-	    MAIN(0, "main"),
-	    SHAFT(1, "shaft"),
-	    BLADE(2, "blade");
+		MAIN(0, "main"), SHAFT(1, "shaft"), BLADE(2, "blade");
 
-	    private int ID;
-	    private String name;
-	    
-	    private EnumType(int ID, String name) {
-	        this.ID = ID;
-	        this.name = name;
-	    }
-	    
-	    @Override
-	    public String getName() {
-	        return name;
-	    }
+		private int ID;
+		private String name;
 
-	    public int getID() {
-	        return ID;
-	    }
-	    
-	    @Override
-	    public String toString() {
-	        return getName();
-	    }
+		private EnumType(int ID, String name) {
+			this.ID = ID;
+			this.name = name;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
+		public int getID() {
+			return ID;
+		}
+
+		@Override
+		public String toString() {
+			return getName();
+		}
+	}
+
+	@Override
+	public String getDerivedName(ItemStack stack) {
+		return stack.getMetadata() == 0 ? "controller" : stack.getMetadata() == 1 ? "shaft" : "blade";
 	}
 
 }

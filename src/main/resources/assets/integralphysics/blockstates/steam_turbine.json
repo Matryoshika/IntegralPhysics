@@ -1,0 +1,37 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "block/cube"
+    },
+    "variants": {
+        "normal": [{"model": "integralphysics:steam_turbine.obj"}],
+        "type=main": { "model": "integralphysics:steam_turbine.obj" },
+        "type=blade": { "model": "integralphysics:steam_turbine.obj"},
+        "type=shaft":  { "model": "integralphysics:steam_turbine.obj"},
+        "inventory": [{
+            "model": "integralphysics:steam_turbine.obj",
+            "transform": {
+                    "firstperson": {
+                        "translation": [0, 0.5, 0],
+                        "rotation": [ { "y": 185}, {"x": 0}, {"z": 0} ],
+                        "scale": 0.1
+                    },
+                    "thirdperson": {
+                        "translation": [0.02, 0.05, 0.05],
+                        "rotation": [ { "y": 45}, {"x": 45}, {"z": 0} ],
+                        "scale": 0.1
+                    },
+                    "gui": {
+                        "translation": [0, 0.4, 0],
+                        "rotation": [ { "y": 45}, {"x": 0}, {"z": 0} ],
+                        "scale": 0.1
+                    },
+                    "ground": {
+                        "translation": [0, 0.2, 0],
+                        "rotation": [ { "y": 0}, {"x": 0}, {"z": 0} ],
+                        "scale": 0.1
+                    }
+                }
+        }]
+    }
+} 

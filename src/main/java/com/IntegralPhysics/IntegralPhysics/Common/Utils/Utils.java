@@ -35,14 +35,14 @@ public class Utils {
 	 * Returns Ohm from watt & ampere
 	 */
 	public static double getOhmWA(double watt, double ampere) {
-		return watt / Math.pow(ampere, 2);
+		return watt / (ampere * ampere);
 	}
 
 	/**
 	 * Returns Ohm from volt and ohm
 	 */
 	public static double getOhmVW(double volt, double watt) {
-		return Math.pow(volt, 2) / watt;
+		return (volt * volt) / watt;
 	}
 
 	// Ampere#####################################################################
@@ -81,14 +81,14 @@ public class Utils {
 	 * Returns watt from volt & ohm
 	 */
 	public static double getWattVO(double volt, double ohm) {
-		return Math.pow(volt, 2) / ohm;
+		return (volt * volt) / ohm;
 	}
 
 	/**
 	 * Returns watt from ampere & ampere
 	 */
 	public static double getWattAO(double ampere, double ohm) {
-		return Math.pow(ampere, 2) * ohm;
+		return (ampere * ampere) * ohm;
 	}
 
 }

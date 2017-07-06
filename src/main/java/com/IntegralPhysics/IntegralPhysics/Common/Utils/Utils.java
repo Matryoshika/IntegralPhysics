@@ -85,7 +85,7 @@ public class Utils {
 	}
 
 	/**
-	 * Returns watt from ampere & ampere
+	 * Returns watt from ampere & ohm
 	 */
 	public static double getWattAO(double ampere, double ohm) {
 		return (ampere * ampere) * ohm;

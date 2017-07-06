@@ -36,8 +36,6 @@ public class BlockWire extends Block implements IMetaBlock {
 	
 	public static final PropertyEnum AXII = PropertyEnum.create("axii", Axii.class);
 	
-	public final int[][] neighbours = new int[][]{{0,1,0},{0,-1,0},{1,0,0},{-1,0,0},{0,0,1},{0,0,-1}};
-	
 
 	public BlockWire(Conducters material) {
 		super(Material.IRON);

@@ -30,6 +30,7 @@ public class BlockSteamTurbine extends Block implements IMetaBlock {
 		setRegistryName(IntegralPhysics.MODID, "steam_turbine");
 		setUnlocalizedName(getRegistryName().toString());
 		this.setDefaultState(this.blockState.getBaseState().withProperty(TYPE, EnumType.BLADE));
+		setCreativeTab(IntegralPhysics.TAB);
 	}
 
 	@Override

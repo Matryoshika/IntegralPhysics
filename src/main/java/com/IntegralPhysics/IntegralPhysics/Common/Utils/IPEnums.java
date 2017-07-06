@@ -1,7 +1,5 @@
 package com.IntegralPhysics.IntegralPhysics.Common.Utils;
 
-import java.math.BigDecimal;
-
 import net.minecraft.util.IStringSerializable;
 
 public class IPEnums {
@@ -55,6 +53,45 @@ public class IPEnums {
 		@Override
 		public String toString() {
 			return getName();
+		}
+		
+	}
+	
+	public static enum Axii implements IStringSerializable{
+		UP_LEFT(0),
+		UP_RIGHT(1),
+		UP_FRONT(2),
+		UP_BACK(3),
+		UP_DOWN(4),
+		
+		LEFT_RIGHT(5),
+		LEFT_FRONT(6),
+		LEFT_BACK(7),
+		LEFT_DOWN(8),
+		
+		RIGHT_FRONT(9),
+		RIGHT_BACK(10),
+		RIGHT_DOWN(11),
+		
+		BACK_DOWN(12),
+		BACK_FRONT(13),
+		
+		DOWN_FRONT(14),
+		NONE(15);
+		
+		private int ID;
+		
+		private Axii(int id){
+			ID = id;
+		}
+		
+		public int getID(){
+			return ID;
+		}
+		
+		@Override
+		public String getName(){
+			return this.name().toLowerCase();
 		}
 		
 	}

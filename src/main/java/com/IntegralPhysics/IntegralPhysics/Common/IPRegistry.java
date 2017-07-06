@@ -8,6 +8,7 @@ import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.BlockSteamTurbi
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.IMetaBlock;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.ItemBlockMeta;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.Wiring.BlockWire;
+import com.IntegralPhysics.IntegralPhysics.Common.Utils.IPEnums.Conducters;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -20,7 +21,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class IPRegistry {
 	
 	public static Block TURBINE;
-	public static Block WIRE;
+	public static Block WIRE_ALUMINUM;
+	public static Block WIRE_COPPER;
+	public static Block WIRE_SILVER;
+	public static Block WIRE_SUPER;
 	
 	public static Set<Block> blocks = new HashSet<Block>();
 	public static Set<Item> items = new HashSet<Item>();
@@ -29,7 +33,10 @@ public class IPRegistry {
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> event){
 		blocks.add(TURBINE = new BlockSteamTurbine());
-		blocks.add(WIRE = new BlockWire());
+		blocks.add(WIRE_ALUMINUM = new BlockWire(Conducters.ALUMINUM));
+		blocks.add(WIRE_COPPER = new BlockWire(Conducters.COPPER));
+		blocks.add(WIRE_SILVER = new BlockWire(Conducters.SILVER));
+		blocks.add(WIRE_SUPER = new BlockWire(Conducters.SUPER));
 		blocks.forEach(event.getRegistry()::register);
 	}
 	

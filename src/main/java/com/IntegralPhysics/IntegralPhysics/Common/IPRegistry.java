@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.BlockSteamTurbine;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.IMetaBlock;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.ItemBlockMeta;
+import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.Wiring.BlockWire;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class IPRegistry {
 	
 	public static Block TURBINE;
+	public static Block WIRE;
 	
 	public static Set<Block> blocks = new HashSet<Block>();
 	public static Set<Item> items = new HashSet<Item>();
@@ -27,6 +29,7 @@ public class IPRegistry {
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> event){
 		blocks.add(TURBINE = new BlockSteamTurbine());
+		blocks.add(WIRE = new BlockWire());
 		blocks.forEach(event.getRegistry()::register);
 	}
 	
@@ -36,7 +39,9 @@ public class IPRegistry {
 	}
 	
 	public static ItemBlock getIb(Block block){
-		return block instanceof IMetaBlock ? (ItemBlock) new ItemBlockMeta(block).setRegistryName(block.getRegistryName()) : (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
+		return block instanceof IMetaBlock ? 
+			(ItemBlock) new ItemBlockMeta(block).setRegistryName(block.getRegistryName()) : 
+			(ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 
 }

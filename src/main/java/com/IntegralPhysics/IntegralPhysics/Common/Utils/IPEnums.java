@@ -57,6 +57,14 @@ public class IPEnums {
 		
 	}
 	
+	public enum WireConnect{
+		NONE,
+		CABLE,
+		BLOCK;
+		
+		public static final WireConnect[] VALUES = values();
+	}
+	
 	public static enum Axii implements IStringSerializable{
 		UP_LEFT(0),
 		UP_RIGHT(1),

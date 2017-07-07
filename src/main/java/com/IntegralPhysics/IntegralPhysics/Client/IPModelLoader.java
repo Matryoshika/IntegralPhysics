@@ -1,8 +1,12 @@
 package com.IntegralPhysics.IntegralPhysics.Client;
 
-import com.IntegralPhysics.IntegralPhysics.IntegralPhysics;
-import com.IntegralPhysics.IntegralPhysics.Client.Models.WireIModel;
+import java.util.HashMap;
+import java.util.List;
 
+import com.IntegralPhysics.IntegralPhysics.IntegralPhysics;
+import com.google.common.collect.Maps;
+
+import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ICustomModelLoader;
@@ -10,9 +14,11 @@ import net.minecraftforge.client.model.IModel;
 
 public class IPModelLoader implements ICustomModelLoader{
 	
+	public static HashMap<String,List<BakedQuad>> cache = Maps.newHashMap();
+	
 	@Override
 	public void onResourceManagerReload(IResourceManager rm){
-		
+		cache.clear();
 	}
 	
 	@Override
@@ -23,8 +29,6 @@ public class IPModelLoader implements ICustomModelLoader{
 	
 	@Override
 	public IModel loadModel(ResourceLocation loc) throws Exception{
-		if(loc.getResourcePath().contains("wire"))
-			return new WireIModel();
 		
 		return null;
 	}

@@ -13,7 +13,7 @@
 hs_err_pid*
 
 #Linux
-*.directory
+.directory
 
 #gradle
 /.gradle

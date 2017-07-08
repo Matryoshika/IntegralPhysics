@@ -1,56 +1,189 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "model": "block/cube"
-    },
-    "variants": {
-        "normal": [{"model": "integralphysics:wire_aluminum_across.obj"}],
-        "axii=up_left": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=up_right": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=up_front": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=up_back": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=up_down": { "model": "integralphysics:wire_aluminum_across.obj" },
-        
-        "axii=left_right": { "model": "integralphysics:wire_aluminum_across.obj" },
-        "axii=left_front": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=left_back": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=left_down": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        
-        "axii=right_front": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=right_back": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=right_down": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        
-        "axii=back_down": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        "axii=back_front": { "model": "integralphysics:wire_aluminum_across.obj" },
-        
-        "axii=down_front": { "model": "integralphysics:wire_aluminum_edge.obj" },
-        
-        "axii=none": { "model": "integralphysics:wire_aluminum_across.obj" },
-        "inventory": [{
-            "model": "integralphysics:wire_aluminum_across.obj",
-            "transform": {
-                    "firstperson": {
-                        "translation": [0, -0.2, 0.4],
-                        "rotation": [ { "y": 0}, {"x": 100}, {"z": 0} ],
-                        "scale": 1
-                    },
-                    "thirdperson": {
-                        "translation": [0.0, 0, 0.37],
-                        "rotation": [ { "y": 0}, {"x": 90}, {"z": 0} ],
-                        "scale": 0.75
-                    },
-                    "gui": {
-                        "translation": [0, 0.6, 0],
-                        "rotation": [ { "y": -22}, {"x": 0}, {"z": 0} ],
-                        "scale": 1.5
-                    },
-                    "ground": {
-                        "translation": [0, 0.2, 0],
-                        "rotation": [ { "y": 0}, {"x": 0}, {"z": 0} ],
-                        "scale": 0.8
-                    }
-                }
-        }]
-    }
-} 
- 
+   "forge_marker":1,
+   "defaults":{
+      "model":"integralphysics:wire_base.obj",
+      "uvlock":true
+   },
+   "variants":{
+      "down":{
+         "true":{
+            "submodel":{
+               "pipe_down":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":0,
+                  "uvlock":true
+               }
+            }
+         },
+         "false":{
+
+         }
+      },
+      "up":{
+         "true":{
+            "submodel":{
+               "pipe_up":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":180,
+                  "uvlock":true
+               }
+            }
+         },
+         "false":{
+
+         }
+      },
+      "north":{
+         "true":{
+            "submodel":{
+               "pipe_north":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":270,
+                  "uvlock":true
+               }
+            }
+         },
+         "false":{
+
+         }
+      },
+      "south":{
+         "true":{
+            "submodel":{
+               "pipe_south":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":90,
+                  "uvlock":true
+               }
+            }
+         },
+         "false":{
+
+         }
+      },
+      "east":{
+         "true":{
+            "submodel":{
+               "pipe_east":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":90,
+                  "y":-90,
+                  "uvlock":true
+               }
+            }
+         },
+         "false":{
+
+         }
+      },
+      "west":{
+         "true":{
+            "submodel":{
+               "pipe_west":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":90,
+                  "y":90,
+                  "uvlock":true
+               }
+            }
+         },
+         "false":{
+
+         }
+      },
+      "inventory":[
+         {
+            "submodel":{
+               "pipe_north":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":270,
+                  "uvlock":true
+               },
+               "pipe_south":{
+                  "model":"integralphysics:silver_extender.obj",
+                  "x":90,
+                  "uvlock":true
+               }
+            },
+            "transform":{
+               "firstperson":{
+                  "translation":[
+                     0,
+                     0,
+                     0
+                  ],
+                  "rotation":[
+                     {
+                        "y":0
+                     },
+                     {
+                        "x":100
+                     },
+                     {
+                        "z":0
+                     }
+                  ],
+                  "scale":0.75
+               },
+               "thirdperson":{
+                  "translation":[
+                     -0.02,
+                     0,
+                     0.1
+                  ],
+                  "rotation":[
+                     {
+                        "y":0
+                     },
+                     {
+                        "x":90
+                     },
+                     {
+                        "z":0
+                     }
+                  ],
+                  "scale":0.75
+               },
+               "gui":{
+                  "translation":[
+                     0,
+                     0.0,
+                     0
+                  ],
+                  "rotation":[
+                     {
+                        "y":140
+                     },
+                     {
+                        "x":0
+                     },
+                     {
+                        "z":0
+                     }
+                  ],
+                  "scale":1
+               },
+               "ground":{
+                  "translation":[
+                     0,
+                     0.2,
+                     0
+                  ],
+                  "rotation":[
+                     {
+                        "y":0
+                     },
+                     {
+                        "x":0
+                     },
+                     {
+                        "z":0
+                     }
+                  ],
+                  "scale":0.6
+               }
+            }
+         }
+      ]
+   }
+}

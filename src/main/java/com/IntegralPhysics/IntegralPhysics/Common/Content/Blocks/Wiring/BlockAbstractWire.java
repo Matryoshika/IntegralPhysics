@@ -41,8 +41,7 @@ public abstract class BlockAbstractWire extends Block implements IMetaBlock {
 						getMinBound(directionVec.getZ()), getMaxBound(directionVec.getX()),
 						getMaxBound(directionVec.getY()), getMaxBound(directionVec.getZ()));
 			}).collect(Collectors.toList()));
-
-	public static final PropertyEnum TYPE = PropertyEnum.create("type", Conducters.class);
+	
 	public final Conducters wireMaterial;
 
 	public BlockAbstractWire(Conducters material) {

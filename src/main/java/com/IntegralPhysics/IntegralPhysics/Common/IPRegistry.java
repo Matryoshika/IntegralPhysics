@@ -39,7 +39,7 @@ public class IPRegistry {
 		blocks.add(TURBINE = new BlockSteamTurbine());
 		blocks.add(WIRE_ALUMINUM = new BlockWire(Conducters.ALUMINUM));
 		blocks.add(WIRE_COPPER = new BlockWire(Conducters.COPPER));
-		//blocks.add(WIRE_SILVER = new BlockWire(Conducters.SILVER));
+		blocks.add(WIRE_SILVER = new BlockWire(Conducters.SILVER));
 		//blocks.add(WIRE_SUPER = new BlockWire(Conducters.SUPER));
 		blocks.forEach(event.getRegistry()::register);
 	}

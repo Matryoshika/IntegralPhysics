@@ -1,0 +1,28 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl None
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+map_Kd integralphysics:blocks/cable_copper
+
+newmtl None_cable_insulation.png
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+map_Kd integralphysics:blocks/cable_insulation
+
+newmtl None_wool_colored_gray.png
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+map_Kd minecraft:blocks/wool_colored_gray
+
+newmtl None_wool_colored_green.png
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+map_Kd integralphysics:blocks/transformer_green
+
+newmtl None_cable_super.png
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+map_Kd integralphysics:blocks/cable_super
+

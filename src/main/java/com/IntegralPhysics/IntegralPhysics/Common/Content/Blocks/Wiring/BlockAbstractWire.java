@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 import com.IntegralPhysics.IntegralPhysics.IntegralPhysics;
+import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.BlockTransformer;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.IMetaBlock;
 import com.IntegralPhysics.IntegralPhysics.Common.Utils.IPEnums.Conducters;
 import com.google.common.collect.ImmutableList;
@@ -28,8 +29,8 @@ import net.minecraft.world.World;
 
 public abstract class BlockAbstractWire extends Block implements IMetaBlock {
 
-	public static final float PIPE_MIN_POS = 0.25f;
-	public static final float PIPE_MAX_POS = 0.75f;
+	public static final float PIPE_MIN_POS = 0.40f;
+	public static final float PIPE_MAX_POS = 0.60f;
 
 	public static final ImmutableList<IProperty<Boolean>> CONNECTED_PROPERTIES = ImmutableList.copyOf(Stream
 			.of(EnumFacing.VALUES).map(facing -> PropertyBool.create(facing.getName())).collect(Collectors.toList()));
@@ -73,13 +74,11 @@ public abstract class BlockAbstractWire extends Block implements IMetaBlock {
 		return false;
 	}
 
-	protected boolean isValidConnection(IBlockState ownState, IBlockState neighbourState, IBlockAccess world,
-			BlockPos ownPos, EnumFacing neighbourDirection) {
-		return neighbourState.getBlock() instanceof BlockAbstractWire && ((BlockAbstractWire)neighbourState.getBlock()).wireMaterial == wireMaterial;
+	public boolean isValidConnection(IBlockState ownState, IBlockState neighbourState, IBlockAccess world,BlockPos ownPos, EnumFacing neighbourDirection) {
+		return (neighbourState.getBlock() instanceof BlockAbstractWire && ((BlockAbstractWire)neighbourState.getBlock()).wireMaterial == wireMaterial) || neighbourState.getBlock() instanceof BlockTransformer;
 	}
 
-	private boolean canConnectTo(IBlockState ownState, IBlockAccess worldIn, BlockPos ownPos,
-			EnumFacing neighbourDirection) {
+	private boolean canConnectTo(IBlockState ownState, IBlockAccess worldIn, BlockPos ownPos,EnumFacing neighbourDirection) {
 		final BlockPos neighbourPos = ownPos.offset(neighbourDirection);
 		final IBlockState neighbourState = worldIn.getBlockState(neighbourPos);
 		final Block neighbourBlock = neighbourState.getBlock();
@@ -95,8 +94,7 @@ public abstract class BlockAbstractWire extends Block implements IMetaBlock {
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		for (final EnumFacing facing : EnumFacing.VALUES)
-			state = state.withProperty(CONNECTED_PROPERTIES.get(facing.getIndex()),
-					canConnectTo(state, world, pos, facing));
+			state = state.withProperty(CONNECTED_PROPERTIES.get(facing.getIndex()), canConnectTo(state, world, pos, facing));
 
 		return state;
 	}
@@ -106,10 +104,8 @@ public abstract class BlockAbstractWire extends Block implements IMetaBlock {
 	}
 
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB mask,
-			List<AxisAlignedBB> list, @Nullable Entity collidingEntity) {
-		final AxisAlignedBB bb = new AxisAlignedBB(PIPE_MIN_POS, PIPE_MIN_POS, PIPE_MIN_POS, PIPE_MAX_POS, PIPE_MAX_POS,
-				PIPE_MAX_POS);
+	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB mask, List<AxisAlignedBB> list, @Nullable Entity collidingEntity) {
+		final AxisAlignedBB bb = new AxisAlignedBB(PIPE_MIN_POS, PIPE_MIN_POS, PIPE_MIN_POS, PIPE_MAX_POS, PIPE_MAX_POS, PIPE_MAX_POS);
 		addCollisionBoxToList(pos, mask, list, bb);
 
 		state = getActualState(state, worldIn, pos);

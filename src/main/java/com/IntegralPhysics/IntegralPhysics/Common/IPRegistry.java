@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import com.IntegralPhysics.IntegralPhysics.IntegralPhysics;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.BlockSteamTurbine;
+import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.BlockTransformer;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.IMetaBlock;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.ItemBlockMeta;
 import com.IntegralPhysics.IntegralPhysics.Common.Content.Blocks.Wiring.BlockWire;
@@ -27,6 +28,7 @@ public class IPRegistry {
 	public static Block WIRE_COPPER;
 	public static Block WIRE_SILVER;
 	public static Block WIRE_SUPER;
+	public static Block TRANSFORMER;
 	
 	public static Item DEBUGGER;
 	
@@ -41,6 +43,7 @@ public class IPRegistry {
 		blocks.add(WIRE_COPPER = new BlockWire(Conducters.COPPER));
 		blocks.add(WIRE_SILVER = new BlockWire(Conducters.SILVER));
 		//blocks.add(WIRE_SUPER = new BlockWire(Conducters.SUPER));
+		blocks.add(TRANSFORMER = new BlockTransformer());
 		blocks.forEach(event.getRegistry()::register);
 	}
 	
